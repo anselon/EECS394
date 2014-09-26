@@ -8,20 +8,25 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 	<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
 	<script>
-	Parse.initialize("Gx6K58x6S9mgKFhmcJoQW0RiukiwJotDXxSVMXaw", "eFnTwVajL4dO101x6mWlquaNI9ien76trdEdfaA6");
+	Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
 	</script>
 	<style>
 
 	</style>
 </head> 
+
+
 <body> 
+
 <script type="text/javascript">
-	var TestObject = Parse.Object.extend("TestObject");
+var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
 testObject.save({foo: "bar"}).then(function(object) {
   alert("yay! it worked");
 });
 </script>
+
+
 <div data-role="page">
 
 	<div data-role="header">
