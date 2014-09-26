@@ -9,11 +9,12 @@
 	<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
 	<script>
 	Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
-	</script>
-		<script>
+
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '297520597109030',
+      status	 : true,
+      cookie	 : true,
       xfbml      : true,
       version    : 'v2.1'
     });
@@ -27,9 +28,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-	<style>
-
-	</style>
+	
 </head> 
 
 
@@ -37,11 +36,40 @@
 
 
 <script type="text/javascript">
-var TestObject = Parse.Object.extend("TestObject");
-var testObject = new TestObject();
-testObject.save({foo: "bar"}).then(function(object) {
-
+Parse.FacebookUtils.logIn(null, {
+  success: function(user) {
+    if (!user.existed()) {
+      alert("User signed up and logged in through Facebook!");
+    } else {
+      alert("User logged in through Facebook!");
+    }
+  },
+  error: function(user, error) {
+    alert("User cancelled the Facebook login or did not fully authorize.");
+  }
 });
+
+Parse.FacebookUtils.logIn("email", {
+  success: function(user) {
+    // Handle successful login
+  },
+  error: function(user, error) {
+    // Handle errors and cancellation
+  }
+});
+
+
+if (!Parse.FacebookUtils.isLinked(user)) {
+  Parse.FacebookUtils.link(user, null, {
+    success: function(user) {
+      alert("Woohoo, user logged in with Facebook!");
+    },
+    error: function(user, error) {
+      alert("User cancelled the Facebook login or did not fully authorize.");
+    }
+  });
+}
+
 </script>
 
 
@@ -55,13 +83,6 @@ testObject.save({foo: "bar"}).then(function(object) {
 	<div data-role="ui-content">	
 
 
-
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
 			<img src = "flyers/nudm.jpg" style="width:100%;" />
 
 
