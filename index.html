@@ -10,6 +10,23 @@
 	<script>
 	Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
 	</script>
+		<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '297520597109030',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 	<style>
 
 	</style>
@@ -18,13 +35,15 @@
 
 <body> 
 
+
 <script type="text/javascript">
 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
 testObject.save({foo: "bar"}).then(function(object) {
-  alert("yay! it worked");
+
 });
 </script>
+
 
 
 <div data-role="page">
@@ -37,6 +56,12 @@ testObject.save({foo: "bar"}).then(function(object) {
 
 
 
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 			<img src = "flyers/nudm.jpg" style="width:100%;" />
 
 
