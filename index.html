@@ -82,7 +82,20 @@ if (!Parse.FacebookUtils.isLinked(user)) {
 			<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all " role="button" style=" zoom: 3.0;float:left;"></a>
 		
 			<a href="#" data-role="button" data-icon="star" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button" style=" zoom: 3.0;float:right;"></a>
-
+            
+            
+            <script>
+                
+            function excolor( color1, color2) {
+                $("#rightbutton").removeClass("ui-btn-hover-"+color1+" ui-btn-hover-"+color2+" ui-btn-up-"+color1+" ui-btn-up-"+color2);
+                $("#rightbutton").buttonMarkup({theme:color2});
+                $("#rightbutton").unbind('click');
+                $("#rightbutton").click(function(){excolor(color2,color1)});
+            }
+            
+            $('#rightbutton').click(function(){excolor("c","e")});
+            
+            </script>
 
 			<!--<div data-role="button" data-icon ="star" style="width:15%"></div>-->
 
