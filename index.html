@@ -4,90 +4,26 @@
   <title>NU Flyer</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
   <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
- 
-  <style>  
+    <script type="text/javascript" src ="scripts/app.js"></script>  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+    <script type="text/javascript" src ="scripts/main.js"></script>
 
 
-  </style>
+
   
 </head> 
 
 
 <body> 
+  <div id="fb-root"></div>
 
 
-  <script type="text/javascript">
+  <script type="text/javascript" src ="scripts/facebook.js"></script>
 
-  Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
-
-  var isLoaded = false;
-   window.fbAsyncInit = function() {
-    Parse.FacebookUtils.init({ // this line replaces FB.init({
-      appId      : '297520597109030', // Facebook App ID
-      status     : true, // check Facebook Login status
-      cookie     : true, // enable cookies to allow Parse to access the session
-      xfbml      : true,
-      version    : 'v2.1'
-    });
-
-  isLoaded = true;
-
-
-    if(isLoaded){
-    Parse.FacebookUtils.logIn( null , {
-      success: function(user) {
-        if (!user.existed()) {
-          alert("User signed up and logged in through Facebook!");
-        } else {
-          alert("User logged in through Facebook!");
-        }
-
-
-      },
-      error: function(user, error) {
-        alert("User cancelled the Facebook login or did not fully authorize.");
-      }
-    });
-
-
-    Parse.User.current().save({image: ["nudm.jpg", "bbq.jpg", "block.jpg"]});
-   // var flyer_index = 0;
-
-
-   /* if (!Parse.FacebookUtils.isLinked(user)) {
-      Parse.FacebookUtils.link(user, null, {
-        success: function(user) {
-          alert("Woohoo, user logged in with Facebook!");
-        },
-        error: function(user, error) {
-          alert("User cancelled the Facebook login or did not fully authorize.");
-        }
-      });
-    }
-*/
-    }
-
-    else console.log("not loaded");
-
-  };
- 
-
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = js.src = "//connect.facebook.net/en_US/sdk/debug.js";
-
-   // "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-
-
-</script>
 
 <div data-role="page">
 
@@ -101,43 +37,16 @@
   <img class ="flyer" src ="flyers/nudm.jpg" style="width:100%;"/>
 
  
-<script>
-$(function(){
-
-  // Bind the swipeHandler callback function to the swipe event on div.box
-  $( "img.flyer" ).on( "swipe", swipeHandler );
- 
-  // Callback function references the event target and adds the 'swipe' class to it
-  function swipeHandler( event ){
-
-     $(event.target).attr("src", "flyers/" + Parse.User.current().image[flyer_index]);
-
-   //flyer_index += 1;
-  }
-});
-</script>
-
     
 
 
 
 			<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all " role="button" style=" zoom: 3.0;float:left;"></a>
 		
-			<a href="#" id="rightbutton" data-role="button" data-icon="star" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button" style=" zoom: 3.0;float:right;"></a>
+      <a href="#" id="rightbutton" data-role="button" data-icon="star" data-iconpos="notext" data-inline="true" data-theme="c" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button" style=" zoom: 3.0;float:right;"></a>
+
             
             
-            <script type="text/javascript">
-                
-            function excolor( color1, color2) {
-                $("#rightbutton").removeClass("ui-btn-hover-"+color1+" ui-btn-hover-"+color2+" ui-btn-up-"+color1+" ui-btn-up-"+color2);
-                $("#rightbutton").buttonMarkup({theme:color2});
-                $("#rightbutton").unbind('click');
-                $("#rightbutton").click(function(){excolor(color2,color1)});
-            }
-            
-            $('#rightbutton').click(function(){excolor("c","e")});
-            
-            </script>
 
 
 
@@ -148,10 +57,7 @@ $(function(){
 
 
 </body>
+      <script type="text/javascript" src ="scripts/app.js"></script>
+
 </html>
 
-<!---
-  - list events your friends are attending first
-    - free food
-    - available
--->
