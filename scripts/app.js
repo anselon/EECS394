@@ -1,21 +1,15 @@
 
-/* function excolor( color1, color2) {
- 	
-		$("#rightbutton").removeClass("ui-btn-hover-"+color1+" ui-btn-hover-"+color2+" ui-btn-up-"+color1+" ui-btn-up-"+color2);
-		$("#rightbutton").buttonMarkup({theme:color2});
-		$("#rightbutton").unbind('click');
-	
-}
-*/
 
-	//go to next flyer
-	function nextFlyer(){
-	  
-	  $( "img.flyer" ).trigger("swipe");
 
- 
-     }
-	
+$('#leftbutton').click(function(){
+
+	$("#leftbutton").attr('data-theme', "e");
+	$("#leftbutton").toggleClass("ui-btn-active");
+    
+	window.setTimeout(nextFlyer, 500);
+
+
+});
 
 $('#rightbutton').click(function(){
 
@@ -23,8 +17,9 @@ $('#rightbutton').click(function(){
 	$("#rightbutton").toggleClass("ui-btn-active");
     
 	//add flyer to array of bookmarks
-    Parse.User.current().add("bookmark", $('img.flyer').attr("src"));
-
+	//check if unique before adding to array with indexOf()
+    Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
+    
 	Parse.User.current().save(null,{
 	  success: function(testObject) {
 	    // save succeeded
@@ -37,7 +32,7 @@ $('#rightbutton').click(function(){
 
 
 
-  window.setTimeout(nextFlyer, 1000);
+  window.setTimeout(nextFlyer, 500);
 
 
 });

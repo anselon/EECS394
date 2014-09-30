@@ -17,18 +17,21 @@
       success: function(user) {
         if (!user.existed()) {
            window.fbAsyncInit.fbLoaded.resolve();
-          alert("User signed up and logged in through Facebook!");
+          alert("Welcome!");
+          console.log("User signed up and logged in through Facebook!");
 
         } else {
            window.fbAsyncInit.fbLoaded.resolve();
-          alert("User logged in through Facebook!");
+          alert("Welcome!");
+          console.log("User logged in through Facebook!");
 
         }
 
 
       },
       error: function(user, error) {
-        alert("User cancelled the Facebook login or did not fully authorize.");
+        alert("Please refresh the page and login through Facebook.");
+        console.log("User cancelled the Facebook login or did not fully authorize.")
       }
     });
 
@@ -74,23 +77,18 @@ window.fbAsyncInit.fbLoaded = $.Deferred();
 window.fbAsyncInit.fbLoaded.done(function(){
     
 
-    Parse.User.current().save({image: ["nudm.jpg", "bbq.jpg", "block.jpg"]});
+    Parse.User.current().save({image: ["nudm.jpg", "bbq.jpg", "block.jpg", "vertigo.jpg", "flyer1.jpg" , "flyer2.jpg" , "flyer3.jpg"
+      , "flyer4.jpg" , "flyer5.jpg", "flyer6.jpg" , "flyer7.jpg" , "flyer8.jpg" , "flyer9.jpg", , "flyer10.jpg" , "flyer11.jpg" , "flyer12.jpg"]});
    
-    var flyer_index = 1;
+
 
 
      // Bind the swipeHandler callback function to the swipe event on div.box
-  $( "img.flyer" ).on( "swipe", swipeHandler );
+  $( "img.flyer" ).on( "swipe", { sort: "image"}, swipeHandler);
  
   // Callback function references the event target and adds the 'swipe' class to it
-
-     function swipeHandler( event ){
-
+  
 
 
-     $(event.target).attr("src", "flyers/" + Parse.User.current().get("image")[flyer_index]);
-
-      flyer_index += 1;
-  }
 
 }); 

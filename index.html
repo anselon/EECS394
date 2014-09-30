@@ -27,9 +27,11 @@
 
 <div data-role="page">
 
-  <div data-role="header">
-    <h1>NU Flyer</h1>
-  </div><!-- /header -->
+<div data-role="header" data-position="inline">
+   <a href="#" data-icon="home" data-role="button" onclick="getHome()" class="ui-btn-left">Home</a>
+  <h1>NUflyer</h1>
+  <a href="#" data-icon="star" data-role="button" onclick="getBookmarked()" class="ui-btn-right">Favorites</a>
+</div>
 
   <div data-role="ui-content">  
 
@@ -41,7 +43,7 @@
 
 
 
-			<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all " role="button" style=" zoom: 3.0;float:left;"></a>
+			<a href="#" id="leftbutton" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all " role="button" style=" zoom: 3.0;float:left;"></a>
 		
       <a href="#" id="rightbutton" data-role="button" data-icon="star" data-iconpos="notext" data-inline="true" data-theme="c" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button" style=" zoom: 3.0;float:right;"></a>
 
@@ -53,7 +55,10 @@
   </div><!-- /content -->
 
 
+
 </div><!-- /page -->
+
+
 
 
 </body>
