@@ -1,6 +1,6 @@
 
 
-		var flyer_index = 0;
+		var flyer_index = 1;
 
 		//add flyer_index as event data
 		function getBookmarked(){
@@ -34,9 +34,6 @@
      	console.log(flyer_index)
 
      	     //get length and check if at end of array
-     if (flyer_index < Parse.User.current().get(event.data.sort).length){flyer_index += 1;}
-
-     else {flyer_index = 0;}
 
      $(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
 
@@ -46,6 +43,9 @@
      		$("#leftbutton").removeClass("ui-btn-active");
  	 }
 
+     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){flyer_index += 1;}
+
+     else {flyer_index = 0;}
 
      
 
