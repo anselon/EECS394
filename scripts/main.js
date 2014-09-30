@@ -1,6 +1,6 @@
 
 
-		var flyer_index = 1;
+		var flyer_index = 0;
 
 		//add flyer_index as event data
 		function getBookmarked(){
@@ -32,6 +32,12 @@
 
      function swipeHandler(event){
      	console.log(flyer_index)
+
+     	     //get length and check if at end of array
+     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){flyer_index += 1;}
+
+     else {flyer_index = 0;}
+
      $(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
 
      if (event.data.sort == "image")
@@ -40,10 +46,6 @@
      		$("#leftbutton").removeClass("ui-btn-active");
  	 }
 
-     //get length and check if at end of array
-     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){flyer_index += 1;}
-
-     else {flyer_index = 0;}
 
      
 
