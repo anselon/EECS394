@@ -17,12 +17,12 @@
       success: function(user) {
         if (!user.existed()) {
            window.fbAsyncInit.fbLoaded.resolve();
-          alert("Welcome!");
+          alert("Welcome! You have successfully logged in with Facebook!");
           console.log("User signed up and logged in through Facebook!");
 
         } else {
            window.fbAsyncInit.fbLoaded.resolve();
-          alert("Welcome!");
+         alert("Welcome! You have successfully logged in with Facebook!");
           console.log("User logged in through Facebook!");
 
         }
@@ -83,7 +83,7 @@ window.fbAsyncInit.fbLoaded.done(function(){
 
 
 
-     // Bind the swipeHandler callback function to the swipe event on div.box
+  // Bind the swipeHandler callback function to the swipe event on div.box
   $( "img.flyer" ).on( "swipe", { sort: "image"}, swipeHandler);
  
   // Callback function references the event target and adds the 'swipe' class to it
