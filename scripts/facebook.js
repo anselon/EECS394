@@ -84,7 +84,7 @@ window.fbAsyncInit.fbLoaded.done(function(){
 
 
   // Bind the swipeHandler callback function to the swipe event on div.box
-  $( "img.flyer" ).on( "swipe", { sort: "image"}, swipeHandler);
+  $( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler);
  
   // Callback function references the event target and adds the 'swipe' class to it
   
