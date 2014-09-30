@@ -34,7 +34,7 @@
      	console.log(flyer_index)
 
      	     //get length and check if at end of array
-     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){flyer_index += 1;}
+     if (flyer_index < Parse.User.current().get(event.data.sort).length){flyer_index += 1;}
 
      else {flyer_index = 0;}
 
