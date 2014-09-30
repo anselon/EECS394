@@ -7,9 +7,10 @@
 			// Bind the swipeHandler callback function to the swipe event on div.box
   			$( "img.flyer" ).on( "swipe", { sort: "bookmark"}, swipeHandler );
   			
-  			flyer_index = 1;
-  			$( "img.flyer" ).trigger("swipe");
+  			flyer_index = 0;
   			$("#rightbutton").toggleClass("ui-btn-active");
+  			$( "img.flyer" ).trigger("swipe");
+  	
 
 	     }
 
@@ -27,7 +28,6 @@
 
      function swipeHandler(event){
 
-     console.log("index: "+ flyer_index);	
      $(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
 
      if (event.data.sort == "image")

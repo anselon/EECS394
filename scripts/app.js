@@ -1,9 +1,10 @@
 
+	$("#leftbutton").attr('data-theme', "e");
+	$("#rightbutton").attr('data-theme', "e");
 
-
+	
 $('#leftbutton').click(function(){
 
-	$("#leftbutton").attr('data-theme', "e");
 	$("#leftbutton").toggleClass("ui-btn-active");
     
 	window.setTimeout(nextFlyer, 500);
@@ -13,7 +14,7 @@ $('#leftbutton').click(function(){
 
 $('#rightbutton').click(function(){
 
-	$("#rightbutton").attr('data-theme', "e");
+
 	$("#rightbutton").toggleClass("ui-btn-active");
     
 	//add flyer to array of bookmarks
