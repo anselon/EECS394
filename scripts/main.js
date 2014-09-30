@@ -5,6 +5,7 @@
 
 		function getBookmarked(){
 			// Bind the swipeHandler callback function to the swipe event on div.box
+			$( "img.flyer" ).unbind("swipe");
   			$( "img.flyer" ).on( "swipe", { sort: "bookmark"}, swipeHandler );
   			
   			flyer_index = 0;
@@ -17,8 +18,9 @@
 
 		function getHome(){
 			// Bind the swipeHandler callback function to the swipe event on div.box
+		    $( "img.flyer" ).unbind("swipe");
   			$( "img.flyer" ).on( "swipe", { sort: "image"}, swipeHandler );
-  			flyer_index = 1;
+  			flyer_index = 0;
   			$( "img.flyer" ).trigger("swipe");
 
 	     }
