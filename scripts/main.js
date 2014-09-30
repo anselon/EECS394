@@ -6,9 +6,10 @@
 		function getBookmarked(){
 			// Bind the swipeHandler callback function to the swipe event on div.box
   			$( "img.flyer" ).on( "swipe", { sort: "bookmark"}, swipeHandler );
-  			$("#rightbutton").toggleClass("ui-btn-active");
+  			
   			flyer_index = 1;
   			$( "img.flyer" ).trigger("swipe");
+  			$("#rightbutton").toggleClass("ui-btn-active");
 
 	     }
 
