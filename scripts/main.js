@@ -2,7 +2,7 @@
 
 		var flyer_index = 1;
 
-
+		//add flyer_index as event data
 		function getBookmarked(){
 			// Bind the swipeHandler callback function to the swipe event on div.box
 			$( "img.flyer" ).unbind("swipe");
@@ -39,10 +39,9 @@
  	 }
 
      //get length and check if at end of array
-     if (flyer_index == Parse.User.current().get(event.data.sort).length - 1)
-      {flyer_index += 1;}
+     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){flyer_index += 1;}
 
-     else {flyer_index = 1;}
+     else {flyer_index = 0;}
 
      
 
