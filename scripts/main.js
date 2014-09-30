@@ -29,7 +29,7 @@
 
 
      function swipeHandler(event){
-
+     	console.log(flyer_index)
      $(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
 
      if (event.data.sort == "image")
@@ -39,7 +39,7 @@
  	 }
 
      //get length and check if at end of array
-     if (flyer_index < Parse.User.current().get(event.data.sort).length - 1)
+     if (flyer_index == Parse.User.current().get(event.data.sort).length - 1)
       {flyer_index += 1;}
 
      else {flyer_index = 1;}
