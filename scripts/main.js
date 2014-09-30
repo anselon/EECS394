@@ -39,7 +39,7 @@
      if (flyer_index < Parse.User.current().get(event.data.sort).length - 1)
       {flyer_index += 1;}
 
-     else {flyer_index += 1;}
+     else {flyer_index = 1;}
 
      
 
