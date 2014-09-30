@@ -5,7 +5,7 @@
 		//add flyer_index as event data
 		function getBookmarked(){
 			// Bind the swipeHandler callback function to the swipe event on div.box
-			//$( "img.flyer" ).unbind( "swipe", { sort: "image"}, swipeHandler );
+			$( "img.flyer" ).unbind( "swipe", { sort: "image"}, swipeHandler );
   			$( "img.flyer" ).bind( "swipe", { sort: "bookmark"}, swipeHandler );
   			
   			
@@ -34,7 +34,7 @@
      	console.log(flyer_index)
 
      	     //get length and check if at end of array
-     if (event.data.sort == "image") {flyer_index = 0;}
+
      $(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
 
      if (event.data.sort == "image")
