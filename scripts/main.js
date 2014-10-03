@@ -72,10 +72,12 @@ $('#rightbutton').click(function(){
     
 	//add flyer to array of bookmarks
 	//check if unique before adding to array with indexOf()
+  if (Parse.User.current().get(event.data.sort).indexOf($('img.flyer').attr("src").substring(7)) == -1)
+  {
     Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
     
 	Parse.User.current().save();
-
+}
 
 
   window.setTimeout(nextFlyer, 500);
