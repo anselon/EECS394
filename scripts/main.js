@@ -74,15 +74,7 @@ $('#rightbutton').click(function(){
 	//check if unique before adding to array with indexOf()
     Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
     
-	Parse.User.current().save(null,{
-	  success: function(testObject) {
-	    // save succeeded
-	  },
-	  error: function(testObject, error) {
-	    // inspect error
-	  }
-
-	});
+	Parse.User.current().save();
 
 
 
