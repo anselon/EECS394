@@ -22,7 +22,7 @@ $('#rightbutton').click(function(){
     Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
     
 	Parse.User.current().save(null,{
-	  success: function(testObject) {
+	  success: function() {
 	    // save succeeded
 	  },
 	  error: function(testObject, error) {
