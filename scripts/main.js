@@ -2,6 +2,10 @@ $("#leftbutton").attr('data-theme', "e");
 $("#rightbutton").attr('data-theme', "e");
 
 
+
+//$( "img.flyer" ).attr('src', Parse.flyers.get('hard_link').where
+
+
 var flyer_index = 1;
 
 //add flyer_index as event data
@@ -27,22 +31,54 @@ function getHome(){
 
 
 function swipeHandler(event){
-	console.log(flyer_index)
+	console.log(flyer_index);
+	
+	//query for next flyer
+	var flyers = Parse.Object.extend("flyers");
+	var query = new Parse.Query(flyers);
+	var flyer_link;
+	query.equalTo('flyer_num', flyer_index);
+	query.find({
+	  success: function(results) {
+	    //Success callback
+    
+      var object = results[0];
+      flyer_link = object.get('hard_link');
+     	$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));     	      
 
-	     //get length and check if at end of array
-	$(event.target).attr("src", "flyers/" + Parse.User.current().get(event.data.sort)[flyer_index]);
-
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
+	});
+   		   		
 	if (event.data.sort == "image")
 	{      
 	    $("#rightbutton").removeClass("ui-btn-active");
 		$("#leftbutton").removeClass("ui-btn-active");
  	}
+//check if at last flyer
+ 	var query = new Parse.Query(flyers);
+ 	var numOfFlyers;
+ 	query.find({
+	  success: function(results) {
 
-	if (flyer_index < Parse.User.current().get(event.data.sort).length - 1){
-		flyer_index += 1;
-	}else {
-		$(event.target).attr("src", "flyers/end.jpg");
-	}
+	  	if (flyer_index < results.length)
+	  	{
+	  		flyer_index += 1;
+	  	}
+	  	else { $(event.target).attr("src", "flyers/end.jpg");}
+
+	  	
+	  },
+	  error: function(error) {
+	  //s	$(event.target).attr("src", "flyers/end.jpg");
+	  	console.log(error);
+
+	  }
+	});
+
+		
 
 };
 
@@ -69,15 +105,17 @@ $('#rightbutton').click(function(){
 
 
 	$("#rightbutton").toggleClass("ui-btn-active");
-    
+
 	//add flyer to array of bookmarks
 	//check if unique before adding to array with indexOf()
-  if (Parse.User.current().get(event.data.sort).indexOf($('img.flyer').attr("src").substring(7)) == -1)
-  {
+ // if (Parse.User.current().get(event.data.sort).indexOf($('img.flyer').attr("src").substring(7)) == -1)
+  //{
+
+
     Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
     
 	Parse.User.current().save();
-}
+//}
 
 
   window.setTimeout(nextFlyer, 500);
