@@ -44,7 +44,10 @@ function swipeHandler(event){
     
       var object = results[0];
       flyer_link = object.get('hard_link');
-     	$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));     	      
+     	$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));  
+
+     	if ( object.get('freefood') == true ) {$("img.flyer").css({ "border": "5px solid green" });} 
+     	else {$("img.flyer").css({ "border": "0px" });} 	      
 
 	  },
 	  error: function(error) {
