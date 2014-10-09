@@ -75,12 +75,9 @@ window.fbAsyncInit.fbLoaded = $.Deferred();
 
 
 window.fbAsyncInit.fbLoaded.done(function(){
-    
-
-    Parse.User.current().save({image: ["nudm.jpg", "bbq.jpg", "block.jpg", "vertigo.jpg", "flyer1.jpg" , "flyer2.jpg" , "flyer3.jpg"
-      , "flyer4.jpg" , "flyer5.jpg", "flyer6.jpg" , "flyer7.jpg" , "flyer8.jpg" , "flyer9.jpg", , "flyer10.jpg" , "flyer11.jpg" , "flyer12.jpg"]});
-   
-
+       
+    Parse.User.current().save({image: ["axo.jpg", "bbq.jpg", "chipotle.jpg" , "end.jpg"
+    , "flyer7.jpg" ,  "flyer11.jpg"]});
 
 
   // Bind the swipeHandler callback function to the swipe event on div.box
