@@ -7,6 +7,32 @@ $("#rightbutton").attr('data-theme', "e");
 
 
 var flyer_index = 0;
+getInstruction();
+
+function getInstruction(){
+	var instruction = Parse.Object.extend("User");
+	var query = new Parse.Query(instruction);
+	query.find({
+	  success: function(results) {
+		var object = results[0];
+		if (object.get('instruction') == false ) 
+		{
+			$("img.flyer").after("<img id='instruction' src='./instruction.png' width='80%' style='position: absolute; top: 42.4px; z-index=10'/>");
+			
+			$("#instruction").on('click',function(event){
+				this.remove();
+			});
+
+		}
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
+	});
+
+}
+ 
+
 
 //add flyer_index as event data
 function getBookmarked(){
