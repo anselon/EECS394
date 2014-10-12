@@ -10,26 +10,16 @@ var flyer_index = 0;
 getInstruction();
 
 function getInstruction(){
-	var instruction = Parse.Object.extend("User");
-	var query = new Parse.Query(instruction);
-	query.find({
-	  success: function(results) {
-		var object = results[0];
-		if (object.get('instruction') == false ) 
-		{
-			$("img.flyer").after("<img id='instruction' src='./instruction.png' width='80%' style='position: absolute; top: 42.4px; z-index=10'/>");
-			
-			$("#instruction").on('click',function(event){
-				this.remove();
-			});
-
-		}
-	  },
-	  error: function(error) {
-	    console.log(error);
-	  }
-	});
-
+	if (Parse.User.current().get("instruction") == false) {
+		$("body").append("<img id='instruction' src='./instruction.png' width='100%' style='position: fixed; z-index:21'/>");
+		$("body").append("<div class='overlay'></div> ")
+		$("#instruction").on('click',function(event){
+			this.remove();
+			$(".overlay").remove();
+			Parse.User.current().set("instruction", true);
+			Parse.User.current().save();
+		});
+	}
 }
  
 
