@@ -24,3 +24,10 @@ body{
 	
 }
 
+.favorites{
+	width:20%;
+	display:inline;
+	float:left;
+	height:150%;
+	margin-left:10%;
+}

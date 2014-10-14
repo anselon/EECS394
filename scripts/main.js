@@ -11,11 +11,21 @@ var flyer_index = 1;
 //add flyer_index as event data
 function getBookmarked(){
 	// Bind the swipeHandler callback function to the swipe event on div.box
-	$( "img.flyer" ).unbind( "swipe", { sort: "image"}, swipeHandler );
-	$( "img.flyer" ).bind( "swipe", { sort: "bookmark"}, swipeHandler );
-	$("#rightbutton").toggleClass("ui-btn-active");
-	$( "img.flyer" ).trigger("swipe");
+	// $( "img.flyer" ).unbind( "swipe", { sort: "image"}, swipeHandler );
+	// $( "img.flyer" ).bind( "swipe", { sort: "bookmark"}, swipeHandler );
+	// $("#rightbutton").toggleClass("ui-btn-active");
+	// $( "img.flyer" ).trigger("swipe");
+	$user = Parse.User.current();
 
+	$(".flyer").hide();
+	$(".bookmark").show();
+
+		for(i =0 ; i < $user.get('bookmark').length; ++i){
+			$(".bookmark").append('<img class = "favorites" src = "flyers/' + $user.get('bookmark')[i] +'" />');
+		}
+
+	
+	
 
  }
 
@@ -23,6 +33,8 @@ function getBookmarked(){
 function getHome(){
 	// Bind the swipeHandler callback function to the swipe event on div.box
    // $( "img.flyer" ).unbind("swipe");
+   $(".flyer").show();
+   $(".bookmark").html('');
 		$( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
 		//$( "img.flyer" ).bind();
 		flyer_index = 0;
@@ -109,16 +121,14 @@ $('#rightbutton').click(function(){
 
 	$("#rightbutton").toggleClass("ui-btn-active");
 
-	//add flyer to array of bookmarks
-	//check if unique before adding to array with indexOf()
- // if (Parse.User.current().get(event.data.sort).indexOf($('img.flyer').attr("src").substring(7)) == -1)
-  //{
+
+  	$flyerSlug = $('img.flyer').attr("src").substring(7);
+  	$user = Parse.User.current();
+
+	$user.add('bookmark', $flyerSlug);
 
 
-    Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
-    
-	Parse.User.current().save();
-//}
+
 
 
   window.setTimeout(nextFlyer, 500);
