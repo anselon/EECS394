@@ -11,6 +11,16 @@ body{
 	display:block;
 	border-color:green;
 }
+.overlay{
+	opacity: 0.8;
+	background-color: #ccc;
+	position: relative;
+	width:80%;
+	height:100%;
+	top:42.4px;
+	margin:auto;
+	z-index:20;
+}
 #button-footer{
 	width: 80%;
 	margin-left:auto;
