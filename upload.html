@@ -67,6 +67,10 @@ Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV
           var newFlyer = Parse.Object.extend("flyers");
           var flyernew = new newFlyer();
           flyernew.set("hard_link", data.url);
+          var d = $('#datepicker').datepicker('getDate');
+          var d2 = $('#datepicker2').datepicker('getDate');
+          flyernew.set("start", d);
+          flyernew.set("end", d2);
           flyernew.save(null, {
             success: function(flyernew) {alert('success')},
             error: function(flyernew, error) {alert('fail')}});
