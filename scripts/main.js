@@ -30,7 +30,7 @@ function getBookmarked(){
 
 	$user = Parse.User.current();
 
-	$(".flyer").hide();http://localhost:8888/flyers/flyer7.jpg
+	$(".flyer").hide(); //http://localhost:8888/flyers/flyer7.jpg
 	$(".bookmark").show();
 		for(i =0 ; i < $user.get('bookmark').length; ++i){
 			$(".bookmark").append('<img class = "favorites" src = "flyers/' + $user.get('bookmark')[i] +'" />');
@@ -47,9 +47,12 @@ function getHome(){
 
    $(".flyer").show();
    $(".bookmark").html('');
-		$( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
+		//$( "img.flyer" ).trigger("swipeleft");
+		//$( "img.flyer" ).trigger("swiperight");
 
-		flyer_index = 0;
+		//$( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
+
+		//flyer_index = 0;
 
  }		
 
@@ -150,7 +153,8 @@ $('#rightbutton').click(function(){
   	$flyerSlug = $('img.flyer').attr("src").substring(7);
   	$user = Parse.User.current();
 
-	$user.add('bookmark', $flyerSlug);
+	$user.addUnique('bookmark', $flyerSlug);
+	$user.save();
 
   window.setTimeout(nextFlyer, 500);
 
