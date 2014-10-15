@@ -10,6 +10,7 @@ body{
 	margin-right:auto;
 	display:block;
 	border-color:green;
+	margin-top:5%;
 }
 .overlay{
 	opacity: 0.8;
@@ -40,4 +41,5 @@ body{
 	float:left;
 	height:150%;
 	margin-left:10%;
+	margin-top:5%;
 }

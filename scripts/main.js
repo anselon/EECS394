@@ -30,16 +30,22 @@ function getBookmarked(){
 
 	$user = Parse.User.current();
 
-	$(".flyer").hide();http://localhost:8888/flyers/flyer7.jpg
+	$(".flyer").hide();//http://localhost:8888/flyers/flyer7.jpg
 	$(".bookmark").show();
+	if($user.get('bookmark').length > 0){
 		for(i =0 ; i < $user.get('bookmark').length; ++i){
 			$(".bookmark").append('<img class = "favorites" src = "flyers/' + $user.get('bookmark')[i] +'" />');
 		}
+	}else{
+		alert('You have not bookmarked anything!');
+	}
+		
 
 	
 	
 
  }
+	
 
 
 function getHome(){
@@ -135,7 +141,7 @@ function nextFlyer(){
 	
 $('#leftbutton').click(function(){
 
-	$("#leftbutton").toggleClass("ui-btn-active");
+	$("#leftbutton").toggleClass("ui-btn-active");http://localhost:8888/flyers/flyer7.jpg
     
 	window.setTimeout(nextFlyer, 500);
 });
