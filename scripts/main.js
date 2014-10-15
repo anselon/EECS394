@@ -27,24 +27,11 @@ function getInstruction(){
 //add flyer_index as event data
 function getBookmarked(){
 	// Bind the swipeHandler callback function to the swipe event on div.box
-<<<<<<< HEAD
-	// $( "img.flyer" ).unbind( "swipe", { sort: "image"}, swipeHandler );
-	// $( "img.flyer" ).bind( "swipe", { sort: "bookmark"}, swipeHandler );
-	// $("#rightbutton").toggleClass("ui-btn-active");
-	// $( "img.flyer" ).trigger("swipe");
+
 	$user = Parse.User.current();
 
-	$(".flyer").hide();
+	$(".flyer").hide();http://localhost:8888/flyers/flyer7.jpg
 	$(".bookmark").show();
-=======
-	$( "img.flyer" ).unbind( "swipe", { direction: "left"}, swipeHandler );
-	$( "img.flyer" ).unbind( "swipe", { direction: "right"}, swipeHandler );
-	$( "img.flyer" ).bind( "swipe", { direction: "left"}, swipeHandler );
-	$( "img.flyer" ).bind( "swipe", { direction: "right"}, swipeHandler );
-	$("#rightbutton").toggleClass("ui-btn-active");
-	$( "img.flyer" ).trigger("swipeleft");
->>>>>>> 5c50a62f8629f19f787706f18f52769c998e4bf3
-
 		for(i =0 ; i < $user.get('bookmark').length; ++i){
 			$(".bookmark").append('<img class = "favorites" src = "flyers/' + $user.get('bookmark')[i] +'" />');
 		}
@@ -57,19 +44,13 @@ function getBookmarked(){
 
 function getHome(){
 	// Bind the swipeHandler callback function to the swipe event on div.box
-   // $( "img.flyer" ).unbind("swipe");
-<<<<<<< HEAD
+
    $(".flyer").show();
    $(".bookmark").html('');
 		$( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
-		//$( "img.flyer" ).bind();
-=======
-		//$( "img.flyer" ).bind( "swipe", { direction: "left"}, swipeHandler );
-		//$( "img.flyer" ).bind( "swipe", { direction: "right"}, swipeHandler );
-		////$( "img.flyer" ).bind();
->>>>>>> 5c50a62f8629f19f787706f18f52769c998e4bf3
+
 		flyer_index = 0;
-		//$( "img.flyer" ).trigger("swipe");
+
  }		
 
 jQuery( "img.flyer" ).on( "swipeleft", function( event ) { 
@@ -164,28 +145,14 @@ $('#rightbutton').click(function(){
 
 	$("#rightbutton").toggleClass("ui-btn-active");
 
-<<<<<<< HEAD
+
 
   	$flyerSlug = $('img.flyer').attr("src").substring(7);
   	$user = Parse.User.current();
 
 	$user.add('bookmark', $flyerSlug);
 
-
-
-
-
   window.setTimeout(nextFlyer, 500);
-=======
-	//add flyer to array of bookmarks
-	//check if unique before adding to array with indexOf()
- 	// if (Parse.User.current().get(event.data.sort).indexOf($('img.flyer').attr("src").substring(7)) == -1)
-  	//{
-    Parse.User.current().add("bookmark", $('img.flyer').attr("src").substring(7));
-	Parse.User.current().save();
-	//}
-	window.setTimeout(nextFlyer, 500);
->>>>>>> 5c50a62f8629f19f787706f18f52769c998e4bf3
 
 
 });
