@@ -1,8 +1,33 @@
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Upload</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script> 
   <link rel = "stylesheet" type = "text/css" href = "css/styles.css"/>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+  </script>
+  
+</head>
 
-<form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
+<body>
+<p>Start Date: <input type="text" id="datepicker"></p> 
+<p>End Date: <input type="text" id="datepicker2"></p>
+<p>Free Food? <input type="checkbox" id="myCheck"></p>
+
+ 
+ <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
   <fieldset>
     <input type="file" name="fileselect" id="fileselect"></input>
     <input id="uploadbutton" type="button" value="Upload to Parse"/>
@@ -61,3 +86,10 @@ Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV
 
   });
 </script>
+ 
+</body>
+
+
+
+
+</html>
