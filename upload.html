@@ -69,8 +69,14 @@ Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV
           flyernew.set("hard_link", data.url);
           var d = $('#datepicker').datepicker('getDate');
           var d2 = $('#datepicker2').datepicker('getDate');
+          if ($('#myCheck').is(':checked')) {
+            var check = true;
+          } else {
+            var check = false;
+          }
           flyernew.set("start", d);
           flyernew.set("end", d2);
+          flyernew.set("freefood", check);
           flyernew.save(null, {
             success: function(flyernew) {alert('success')},
             error: function(flyernew, error) {alert('fail')}});
