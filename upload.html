@@ -73,7 +73,19 @@ Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV
             var check = true;
           } else {
             var check = false;
-          }
+          } 
+          var query = new Parse.Query('flyers');
+query.count({
+  success: function(number) {
+    alert:('count success');
+    flyernew.set("flyer_num", number);
+    // There are number instances of MyClass.
+  },
+
+  error: function(error) {
+    // error is an instance of Parse.Error.
+  }
+});
           flyernew.set("start", d);
           flyernew.set("end", d2);
           flyernew.set("freefood", check);
