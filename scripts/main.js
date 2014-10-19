@@ -156,7 +156,8 @@ $('#rightbutton').click(function(){
   	$flyerSlug = $('img.flyer').attr("src").substring(7);
   	$user = Parse.User.current();
 
-	$user.add('bookmark', $flyerSlug);
+	$user.addUnique('bookmark', $flyerSlug);
+	$user.save;
 
   window.setTimeout(nextFlyer, 500);
 
