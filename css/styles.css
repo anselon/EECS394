@@ -45,3 +45,11 @@ body{
 	margin-left:10%;
 	margin-top:5%;
 }
+
+.ui-btn-left{
+	float:left;
+	position:relative;
+	height:15px;
+	margin-left:15px;
+	padding-left:19px;
+}
