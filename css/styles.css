@@ -34,7 +34,9 @@ body{
 	
 	
 }
-
+#rightbutton{
+	margin:0% 50% 5px 50%;
+}
 .favorites{
 	width:20%;
 	display:inline;
