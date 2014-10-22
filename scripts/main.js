@@ -164,3 +164,19 @@ $('#rightbutton').click(function(){
 
 });
 
+
+
+
+// Upload function stuff
+$(document).ready(function(){
+	$(".upload").hide();
+	$("#upload").click(function(){
+		$(".upload").show();
+		console.log("hi");
+	})
+	$("#goback").click(function(){
+		$(".upload").hide();
+	})
+
+});
+
