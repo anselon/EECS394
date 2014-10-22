@@ -75,13 +75,15 @@ window.fbAsyncInit.fbLoaded = $.Deferred();
 
 
 window.fbAsyncInit.fbLoaded.done(function(){
-       
-    Parse.User.current().save({image: ["axo.jpg", "bbq.jpg", "chipotle.jpg" , "end.jpg"
-    , "flyer7.jpg" ,  "flyer11.jpg"]});
+    
+     Parse.User.current().save({image: ["axo.jpg", "bbq.jpg", "chipotle.jpg" , "end.jpg", "flyer7.jpg" ,  "flyer11.jpg"]});
+
+
 
 
   // Bind the swipeHandler callback function to the swipe event on div.box
-  $( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler);
+  $( "img.flyer" ).bind( "swipe", { direction: "left"}, swipeHandler);
+  $( "img.flyer" ).bind( "swipe",  { direction: "right"}, swipeHandler);
  
   // Callback function references the event target and adds the 'swipe' class to it
   
