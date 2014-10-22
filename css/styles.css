@@ -53,3 +53,15 @@ body{
 	margin-left:15px;
 	padding-left:19px;
 }
+
+
+.upload{
+	height:100%;
+	width:80%;
+	margin:auto;
+	background-color:white;
+	z-index:5;
+	position:absolute;
+	top:10%;
+	left:10%;
+}

@@ -8,6 +8,11 @@
   <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
   <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script> 
   <link rel = "stylesheet" type = "text/css" href = "css/styles.css"/>
+<script type="text/javascript" src ="scripts/upload.js">
+  
+  
+</script>
+
 
 </head> 
 
@@ -26,7 +31,7 @@
 
    <a href="#" data-icon="home" data-role="button" onclick="getHome()" class="ui-btn-left"></a>
 
-   <a href="upload.html" data-icon="plus" data-role="button" class="ui-btn-left" style = "margin-left:15px; padding-left:19px;"></a>
+   <a href="#"data-icon="plus" id = "upload"data-role="button" class="ui-btn-left" style = "margin-left:15px; padding-left:19px;"></a>
 
 
   <h1>NUflyer</h1>
@@ -55,8 +60,26 @@
   </div><!-- /content -->
 
 
-<!--<fb:login-button scope="public_profile,email" onlogin="Parse.FacebookUtils.logIn();">
-</fb:login-button>-->
+<!-- Popup Upload -->
+<div class = "upload">
+
+  <div data-role= "form">
+  <a  id = "goback"><button>Go Back</button></a>
+  <p>Start Date: <input type="text" data-role="date"></p> 
+  <p>End Date: <input type="text" data-role="date"></p>
+  <p>Free Food? <input type="checkbox" id="myCheck"></p>
+
+   
+   <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
+    <fieldset>
+      <input type="file" name="fileselect" id="fileselect"></input>
+      <input id="uploadbutton" type="button" value="Upload to Parse"/>
+    </fieldset>
+  </form>
+
+ </div>
+
+</div>
 
 </div><!-- /page -->
 
@@ -66,7 +89,6 @@
 </body>
       
       <script type="text/javascript" src ="scripts/main.js"></script>
-
 
 
 </html>

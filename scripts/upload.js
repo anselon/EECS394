@@ -1,10 +1,4 @@
-  $(function() {
-    $( "#datepicker" ).datepicker();
-    console.log('test');
-  });
-  $(function() {
-    $( "#datepicker2" ).datepicker();
-  });
+
 
   Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
   $(function() {
@@ -38,8 +32,8 @@
           var newFlyer = Parse.Object.extend("flyers");
           var flyernew = new newFlyer();
           flyernew.set("hard_link", data.url);
-          var d = $('#datepicker').datepicker('getDate');
-          var d2 = $('#datepicker2').datepicker('getDate');
+          // var d = $('#datepicker').datepicker('getDate');
+          // var d2 = $('#datepicker2').datepicker('getDate');
           if ($('#myCheck').is(':checked')) {
             var check = true;
           } else {
