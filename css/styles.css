@@ -1,8 +1,25 @@
-body{
-	/*position: absolute;*/
-
+#body{
+	background-color:#ECF0F1;
 }
-
+#header-bar{
+	background-color:#2C3E50;
+	color:white;
+	border:5px solid #2C3E50;
+	padding:5px;
+}
+#home{
+	background-color:#2980B9;
+	border:3px solid #2980B9;
+}
+#plus{
+	background-color:#2980B9;
+	border:3px solid #2980B9;
+}
+#favorites{
+	background-color:#2980B9;
+	border:3px solid #2980B9;
+	color:white;
+}
 .flyer{
 	width: 80%;
 	position: relative;
@@ -36,6 +53,10 @@ body{
 }
 #rightbutton{
 	margin:0% 50% 5px 50%;
+	background-color:#E74C3C;
+	border:2px solid #E74C3C;
+	font-size:20px;
+	line-height:100px;
 }
 .favorites{
 	width:20%;
@@ -56,12 +77,17 @@ body{
 
 
 .upload{
-	height:100%;
+	height:40%;
 	width:80%;
 	margin:auto;
+	margin-left:-5%;
 	background-color:white;
 	z-index:5;
 	position:absolute;
 	top:10%;
 	left:10%;
+	border:5px solid #2C3E50;
+	border-radius:5px;
+	padding-left:10px;
+	padding-right:10px;
 }
