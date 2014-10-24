@@ -33,7 +33,6 @@
         processData: false,
         contentType: false,
         success: function(data) {
-          alert("File available at: " + data.url);
 
           var newFlyer = Parse.Object.extend("flyers");
           var flyernew = new newFlyer();
