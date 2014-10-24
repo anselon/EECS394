@@ -141,7 +141,7 @@ function nextFlyer(){
 	
 $('#leftbutton').click(function(){
 
-	$("#leftbutton").toggleClass("ui-btn-active");http://localhost:8888/flyers/flyer7.jpg
+	$("#leftbutton").toggleClass("ui-btn-active");
     
 	window.setTimeout(nextFlyer, 500);
 });
@@ -169,6 +169,7 @@ $('#rightbutton').click(function(){
 
 // Upload function stuff
 $(document).ready(function(){
+	console.log('read');
 	$(".upload").hide();
 	$("#upload").click(function(){
 		$(".upload").show();
