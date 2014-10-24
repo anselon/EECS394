@@ -1,0 +1,183 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>NU Flyer</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script> 
+  <link rel = "stylesheet" type = "text/css" href = "css/styles.css"/>
+
+
+  <link rel="stylesheet" href="jquery.mobile.datepicker.css" />
+  <link rel="stylesheet" href="jquery.mobile.datepicker.theme.css" />
+  <script src="jquery.mobile.datepicker.js"></script>
+  <script src="external/jquery-ui/datepicker.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+  </script>
+
+</head> 
+
+
+<body > 
+    <script type="text/javascript" src ="scripts/facebook.js"></script>
+  <div id="fb-root"></div>
+
+
+
+
+
+<div id = "body" data-role="page">
+
+<div id = "header-bar" data-role="header" data-position="inline">
+
+   <a href="#" id = "home"data-icon="home" data-role="button" onclick="getHome()" class="ui-btn-left"></a>
+
+
+   <a href="#"data-icon="plus" data-role="button" class="ui-btn-left" id ="upload" style = "margin-left:15px; padding-left:19px;"></a>
+
+
+  <h1>NUflyer</h1>
+  <a href="#" id = "favorites" data-icon="star" data-role="button" onclick="getBookmarked()" class="ui-btn-right">Favorites</a>
+</div>
+
+  <div data-role="ui-content">  
+
+
+  <img class ="flyer" src ="flyers/bbq.jpg" width="80%";/>
+  <div class = "bookmark"></div>
+    
+    <div id="button-footer" data-role="footer" data-position="fixed">
+      <div id="button-footer1">
+	<!-- 		<a href="#" id="leftbutton" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all " role="button" style=" zoom: 3.0;float:left;"></a>
+		 -->
+      <a href="#" id="rightbutton" data-role="button" data-icon="star" data-iconpos="notext" data-inline="true" data-theme="c" class="ui-btn-a ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button" style=" zoom: 3.0;"></a>
+    </div>
+    </div>
+
+            
+            
+<div class = "upload">
+
+  <div data-role= "form">
+  <a id = "goback"><button>Go Back</button></a>
+  <p>Start Date: <input type="text" data-role="date" id="datepicker"></p> 
+  <p>End Date: <input type="text" data-role="date" id="datepicker2"></p>
+  <p>Free Food?</p> <input style = "display:inline"type="checkbox" id="myCheck">
+
+   
+   <form id="fileupload" style = "margin-top:30px"name="fileupload" enctype="multipart/form-data" method="post">
+    <fieldset>
+      <input type="file" name="fileselect" id="fileselect"></input>
+      <input id="uploadbutton" type="button" value="Upload to Parse"/>
+    </fieldset>
+  </form>
+
+ </div>
+
+
+  </div><!-- /content -->
+
+
+<!--<fb:login-button scope="public_profile,email" onlogin="Parse.FacebookUtils.logIn();">
+</fb:login-button>-->
+
+</div><!-- /page -->
+
+
+
+
+</body>
+      
+      <script type="text/javascript" src ="scripts/main.js"></script>
+      <script type="text/javascript">
+Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
+  $(function() {
+    var file;
+
+    // Set an event listener on the Choose File field.
+    $('#fileselect').bind("change", function(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      // Our file var now holds the selected file
+      file = files[0];
+    });
+
+    // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+    $('#uploadbutton').click(function() {
+      var serverUrl = 'https://api.parse.com/1/files/' + file.name;
+
+      $.ajax({
+        type: "POST",
+        beforeSend: function(request) {
+          request.setRequestHeader("X-Parse-Application-Id", 'sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw');
+          request.setRequestHeader("X-Parse-REST-API-Key", 'DKj5TwAPMRqpiGHSDbWavpEYQebFnr4GnNBnnI1Y');
+          request.setRequestHeader("Content-Type", file.type);
+        },
+        url: serverUrl,
+        data: file,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          alert("File available at: " + data.url);
+
+          var newFlyer = Parse.Object.extend("flyers");
+          var flyernew = new newFlyer();
+          flyernew.set("hard_link", data.url);
+          var d = $('#datepicker').datepicker('getDate');
+          var d2 = $('#datepicker2').datepicker('getDate');
+          if ($('#myCheck').is(':checked')) {
+            var check = true;
+          } else {
+            var check = false;
+          } 
+          /*
+          var query = new Parse.Query('flyers');
+query.count({
+  success: function(number) {
+    alert:('count success');
+    flyernew.set("flyer_num", number);
+    // There are number instances of MyClass.
+  },
+
+  error: function(error) {
+    // error is an instance of Parse.Error.
+  }
+}); */
+          flyernew.set("freefood", check);
+
+          console.log("hope")
+          flyernew.set("start", d);
+          flyernew.set("end", d2);
+          
+          console.log("yo")
+          flyernew.save(null, {
+            success: function(flyernew) {alert('success')},
+            error: function(flyernew, error) {alert('fail')}});
+
+
+
+
+
+        },
+        error: function(data) {
+          var obj = jQuery.parseJSON(data);
+          alert(obj.error);
+        }
+      });
+    });
+
+
+  });
+</script>
+
+
+
+</html>
+
