@@ -50,7 +50,10 @@
 	margin-left:auto;
 	margin-right:auto;
 	width: 80%;
+	padding-bottom:20px;
 	background: transparent;
+	border: none;
+
 
 
 
@@ -66,12 +69,12 @@
 	border:3px solid #2980B9;
 	color: white;
 	height: 15px;
-	/*margin:0% 50% 5px 50%;
-	background-color:#E74C3C;
-	border:2px solid #E74C3C;
-	font-size:20px;
-	line-height:100px;
-	*/
+	width: 50%;
+
+	background-color:#e69500;
+	border:2px solid #e69500;
+	margin:10px 25% 10px 25%;
+
 }
 #back,#forward{
 
