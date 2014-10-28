@@ -1,4 +1,4 @@
-  $(function() {
+/*  $(function() {
     $( "#datepicker" ).datepicker();
     console.log('test');
   });
@@ -56,7 +56,7 @@ query.count({
   error: function(error) {
     // error is an instance of Parse.Error.
   }
-}); */
+}); 
           flyernew.set("start", d);
           flyernew.set("end", d2);
           flyernew.set("freefood", check);
@@ -78,3 +78,4 @@ query.count({
 
 
   });
+*/
