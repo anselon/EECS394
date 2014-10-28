@@ -53,7 +53,9 @@ function getHome(){
 
    $(".flyer").show();
    $(".bookmark").html('');
+
 // $( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
+
 
 		flyer_index = 0;
 
