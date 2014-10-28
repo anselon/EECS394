@@ -1,25 +1,31 @@
+Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
+
+
 $("#leftbutton").attr('data-theme', "e");
 $("#rightbutton").attr('data-theme', "e");
 
 
-
-//$( "img.flyer" ).attr('src', Parse.flyers.get('hard_link').where
 
 
 var flyer_index = 0;
 getInstruction();
 
 function getInstruction(){
-	if (Parse.User.current().get("instruction") == false) {
+	
+
+	if (localStorage.getItem('seenInstr') == null) {
 		$("body").append("<img id='instruction' src='./instruction.png' width='100%' style='position: fixed; z-index:21'/>");
 		$("body").append("<div class='overlay'></div> ")
 		$("#instruction").on('click',function(event){
 			this.remove();
 			$(".overlay").remove();
-			Parse.User.current().set("instruction", true);
-			Parse.User.current().save();
+
 		});
+		localStorage.setItem('seenInstr','true');		
+
 	}
+
+	
 }
  
 
@@ -28,20 +34,23 @@ function getInstruction(){
 function getBookmarked(){
 	// Bind the swipeHandler callback function to the swipe event on div.box
 
-	$user = Parse.User.current();
+	
 
 	$(".flyer").hide();//http://localhost:8888/flyers/flyer7.jpg
 	$(".bookmark").show();
-	if($user.get('bookmark').length > 0){
-		for(i =0 ; i < $user.get('bookmark').length; ++i){
-			$(".bookmark").append('<img class = "favorites" src = "flyers/' + $user.get('bookmark')[i] +'" />');
-		}
-	}else{
-		alert('You have not bookmarked anything!');
-	}
-		
 
-	
+	var bookmarks = JSON.parse(localStorage.getItem('bookmark_flyers'));
+
+	if (bookmarks != null){
+	if(bookmarks.length > 0){
+		for(i =0 ; i < bookmarks.length; ++i){
+			$(".bookmark").append('<img class = "favorites" src = "flyers/' + bookmarks[i] +'" />');
+		}
+	}
+
+	}
+	//hide bookmark button
+	$('#rightbutton').hide();
 	
 
  }
@@ -53,9 +62,11 @@ function getHome(){
 
    $(".flyer").show();
    $(".bookmark").html('');
-		$( "img.flyer" ).bind( "swipe", { sort: "image"}, swipeHandler );
+   //show bookmark button
+   $('#rightbutton').show();
 
-		flyer_index = 0;
+		
+		
 
  }		
 
@@ -90,7 +101,7 @@ jQuery( "img.flyer" ).on( "swipeleft", function( event ) {
 	  }
 	});
 
- })
+ });
 
 jQuery( "img.flyer" ).on( "swiperight", function( event ) { 
 	console.log('SWIPE RIGHT');
@@ -124,7 +135,7 @@ jQuery( "img.flyer" ).on( "swiperight", function( event ) {
 	  }
 	});
 
-} )
+} );
 
 
 
@@ -134,33 +145,73 @@ jQuery( "img.flyer" ).on( "swiperight", function( event ) {
 //calls swipeHandler
 function nextFlyer(){
 	$( "img.flyer" ).trigger("swipeleft");
-
-	$("#rightbutton").removeClass("ui-btn-active");
-	$("#leftbutton").removeClass("ui-btn-active");
 }
 	
-$('#leftbutton').click(function(){
-
-	$("#leftbutton").toggleClass("ui-btn-active");
-    
-	window.setTimeout(nextFlyer, 500);
-});
-
-$('#rightbutton').click(function(){
-
-
-	$("#rightbutton").toggleClass("ui-btn-active");
 
 
 
-  	$flyerSlug = $('img.flyer').attr("src").substring(7);
-  	$user = Parse.User.current();
 
-	$user.addUnique('bookmark', $flyerSlug);
-	$user.save;
+Array.prototype.removeValue = function(name, value){
+      var array = $.map(this, function(v,i){
+        return v[name] === value ? null : v;
+   });
+   this.length = 0; //clear original array
+   this.push.apply(this, array); //push all elements except the one we want to delete
+}
+	
+function unhighlight(){
 
-  window.setTimeout(nextFlyer, 500);
+	$("#rightbutton").removeClass("ui-btn-active");
+}
 
+var flag = true;
+
+
+$("#rightbutton").click(function(){
+	console.log('click on button');
+
+	//highlight button then unhighlight to signal bookmark
+	$("#rightbutton").addClass("ui-btn-active");
+	window.setTimeout(unhighlight, 500);
+
+	if(flag){
+		//$("#rightbutton").addClass("ui-btn-active");
+		flyerSlug = $('img.flyer').attr("src").substring(7);
+
+
+	if( (localStorage.getItem('bookmark_flyers')) == null){
+				
+				
+				var bookmark = new Array();
+				bookmark.push(flyerSlug);
+				localStorage.setItem('bookmark_flyers',JSON.stringify(bookmark));
+				console.log("if"+bookmark);
+
+			}
+		
+		else
+			{
+				var bookmark = JSON.parse(localStorage.getItem('bookmark_flyers'));
+				bookmark.push(flyerSlug);
+				localStorage.setItem('bookmark_flyers',JSON.stringify(bookmark));
+				console.log("else"+bookmark);
+			}
+		flag = false;
+		//window.setTimeout(nextFlyer, 500);
+
+	}
+	else
+	{
+		//$("#rightbutton").addClass("ui-btn-active");
+		flyerSlug = $('img.flyer').attr("src").substring(7);   //c
+		var bookmark = JSON.parse(localStorage.getItem('bookmark_flyers'));
+		bookmark.removeValue('bookmark_flyers',flyerSlug);
+		console.log(bookmark);
+		
+
+		flag = true;
+	}
+	//window.setTimeout(nextFlyer, 500);
 
 });
 
