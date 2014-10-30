@@ -117,6 +117,7 @@ jQuery( "img.flyer" ).on( "swipeleft", function( event ) {
 		if (results.length == 0) {
 			flyer_index = 0;
 			$(event.target).attr("src", "flyers/end.jpg"); 
+			$("img.flyer").css({ "border": "0px" });
 			console.log("no index");
 			console.log(flyer_index);
 
@@ -140,6 +141,7 @@ jQuery( "img.flyer" ).on( "swipeleft", function( event ) {
 	  error: function(error) {
 	  	flyer_index = 0;
 	  	$(event.target).attr("src", "flyers/end.jpg"); 
+	  	$("img.flyer").css({ "border": "0px" });
 	    console.log(error);
 	  }
 	});
@@ -162,6 +164,7 @@ jQuery( "img.flyer" ).on( "swiperight", function( event ) {
 		var object = results[flyer_index];
 		if (results.length == 0) {
 			$(event.target).attr("src", "flyers/end.jpg"); 
+			$("img.flyer").css({ "border": "0px" });
 			flyer_index = 0;
 			console.log("no index");
 			console.log(flyer_index);
@@ -185,6 +188,7 @@ jQuery( "img.flyer" ).on( "swiperight", function( event ) {
 	  error: function(error) {
 		flyer_index = 0;
 	    	$(event.target).attr("src", "flyers/end.jpg"); 
+	    	$("img.flyer").css({ "border": "0px" });
 	  }
 	});
 
