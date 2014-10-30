@@ -40,14 +40,13 @@ function getBookmarked(){
 	$(".bookmark").show();
 
 	var bookmarks = JSON.parse(localStorage.getItem('bookmark_flyers'));
-	console.log("length is  " +  bookmarks.length);
+
 	if (bookmarks != null){
-		if(bookmarks.length > 0){
-			for(i =0 ; i < bookmarks.length; ++i){
-				$("#favorites-btn").append('<img class = "favorites" src = "flyers/' + bookmarks[i] +'" />');
-				console.log('hi"0;');
-			}
+	if(bookmarks.length > 0){
+		for(i =0 ; i < bookmarks.length; ++i){
+			$(".bookmark").append('<img class = "favorites" src = "flyers/' + bookmarks[i] +'" />');
 		}
+	}
 
 	}
 	//hide bookmark button
