@@ -1,5 +1,5 @@
 Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
-window.localStorage.clear();
+
 
 $("#leftbutton").attr('data-theme', "e");
 $("#rightbutton").attr('data-theme', "e");
