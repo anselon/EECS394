@@ -5,10 +5,37 @@ $("#leftbutton").attr('data-theme', "e");
 $("#rightbutton").attr('data-theme', "e");
 
 
-
-
 var flyer_index = 0;
-getInstruction();
+
+
+
+	//query for next flyer
+	var flyers = Parse.Object.extend("flyers");
+	var query = new Parse.Query(flyers);
+	var flyer_link;
+	query.first();
+
+	//query.equalTo('flyer_num', flyer_index);
+	query.find({
+	  success: function(results) {
+	    //Success callback
+	    	var object = results[0];
+			
+			flyer_link = object.get('hard_link');
+	     	$('img.flyer').attr("src", flyer_link);  
+
+	     	if ( object.get('freefood') == true ) {$("img.flyer").css({ "border": "5px solid green" });} 
+	     	else {$("img.flyer").css({ "border": "0px" });} 	      
+
+	  },
+	  error: function(error) {
+		flyer_index = 0;
+	    	$('img.flyer').attr("src", "flyers/end.jpg"); 
+	  }
+	});
+	flyer_index = flyer_index + 1;
+
+	getInstruction();
 
 function getInstruction(){
 	
@@ -72,32 +99,47 @@ function getHome(){
  }		
 
 jQuery( "img.flyer" ).on( "swipeleft", function( event ) { 
-	console.log('SWIPE LEFT');
+	
 
 	flyer_index = flyer_index + 1;
 	//query for next flyer
 	var flyers = Parse.Object.extend("flyers");
 	var query = new Parse.Query(flyers);
 	var flyer_link;
-	query.equalTo('flyer_num', flyer_index);
+	query.ascending('start');
+	//query.first();
+	//query.equalTo('flyer_num', flyer_index);
 	query.find({
 	  success: function(results) {
 	    //Success callback
-		var object = results[0];
+	   
+		var object = results[flyer_index];
 		if (results.length == 0) {
-			flyer_index = flyer_index -1;
+			flyer_index = 0;
+			$(event.target).attr("src", "flyers/end.jpg"); 
 			console.log("no index");
 			console.log(flyer_index);
-		} else {
+
+		} 
+
+		else if (flyer_index > results.length-1){
+		flyer_index = 0;
+		$(event.target).attr("src", "flyers/end.jpg"); 
+
+		}
+		else {
+
 	     	flyer_link = object.get('hard_link');
-	     	$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));  
+	     	$(event.target).attr("src", flyer_link);
+	     	//$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));  
 
 	     	if ( object.get('freefood') == true ) {$("img.flyer").css({ "border": "5px solid green" });} 
 	     	else {$("img.flyer").css({ "border": "0px" });} 	      
      	}
 	  },
 	  error: function(error) {
-	  	flyer_index = flyer_index -1;
+	  	flyer_index = 0;
+	  	$(event.target).attr("src", "flyers/end.jpg"); 
 	    console.log(error);
 	  }
 	});
@@ -107,23 +149,33 @@ jQuery( "img.flyer" ).on( "swipeleft", function( event ) {
 jQuery( "img.flyer" ).on( "swiperight", function( event ) { 
 	console.log('SWIPE RIGHT');
 
-	flyer_index = flyer_index - 1;
+	
 	//query for next flyer
 	var flyers = Parse.Object.extend("flyers");
 	var query = new Parse.Query(flyers);
 	var flyer_link;
-	query.equalTo('flyer_num', flyer_index);
+	flyer_index = flyer_index -1;
+	//query.equalTo('flyer_num', flyer_index);
 	query.find({
 	  success: function(results) {
 	    //Success callback
-		var object = results[0];
+		var object = results[flyer_index];
 		if (results.length == 0) {
-			flyer_index = flyer_index +1;
+			$(event.target).attr("src", "flyers/end.jpg"); 
+			flyer_index = 0;
 			console.log("no index");
 			console.log(flyer_index);
-		} else {
+		} 
+
+		else if (flyer_index < 0){
+		flyer_index = 0;
+		$(event.target).attr("src", "flyers/end.jpg"); 
+
+		}
+
+		else {
 			flyer_link = object.get('hard_link');
-	     	$(event.target).attr("src", "flyers/" + flyer_link.substring(1, flyer_link.length-1));  
+	     	$(event.target).attr("src", flyer_link);  
 
 	     	if ( object.get('freefood') == true ) {$("img.flyer").css({ "border": "5px solid green" });} 
 	     	else {$("img.flyer").css({ "border": "0px" });} 
@@ -131,8 +183,8 @@ jQuery( "img.flyer" ).on( "swiperight", function( event ) {
 
 	  },
 	  error: function(error) {
-		flyer_index = flyer_index +1;
-	    console.log(error);
+		flyer_index = 0;
+	    	$(event.target).attr("src", "flyers/end.jpg"); 
 	  }
 	});
 
@@ -176,7 +228,7 @@ $("#rightbutton").click(function(){
 	window.setTimeout(unhighlight, 500);
 
 	if(flag){
-		//$("#rightbutton").addClass("ui-btn-active");
+		
 		flyerSlug = $('img.flyer').attr("src").substring(7);
 
 
@@ -198,12 +250,12 @@ $("#rightbutton").click(function(){
 				console.log("else"+bookmark);
 			}
 		flag = false;
-		//window.setTimeout(nextFlyer, 500);
+		
 
 	}
 	else
 	{
-		//$("#rightbutton").addClass("ui-btn-active");
+		
 		flyerSlug = $('img.flyer').attr("src").substring(7);   //c
 		var bookmark = JSON.parse(localStorage.getItem('bookmark_flyers'));
 		bookmark.removeValue('bookmark_flyers',flyerSlug);
@@ -212,7 +264,7 @@ $("#rightbutton").click(function(){
 
 		flag = true;
 	}
-	//window.setTimeout(nextFlyer, 500);
+	
 
 });
 
