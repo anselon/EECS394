@@ -1,5 +1,5 @@
 Parse.initialize("sH4OGJXJIgXqfnuAuLWFNWYvfhN7pNQjDmkpWaSw", "RwtmRovMtfB67Oq9PV7Y9mbEb7nZgnQFShFB38w8");
-
+window.localStorage.clear();
 
 $("#leftbutton").attr('data-theme', "e");
 $("#rightbutton").attr('data-theme', "e");
@@ -35,7 +35,7 @@ var flyer_index = 0;
 	});
 	flyer_index = flyer_index + 1;
 
-	getInstruction();
+	
 
 function getInstruction(){
 	
@@ -54,6 +54,8 @@ function getInstruction(){
 
 	
 }
+	getInstruction();
+
  
 
 
@@ -71,7 +73,7 @@ function getBookmarked(){
 	if (bookmarks != null){
 	if(bookmarks.length > 0){
 		for(i =0 ; i < bookmarks.length; ++i){
-			$(".bookmark").append('<img class = "favorites" src = "flyers/' + bookmarks[i] +'" />');
+			$(".bookmark").append('<img class = "favorites" src = '+bookmarks[i]+' />');
 		}
 	}
 
@@ -233,7 +235,7 @@ $("#rightbutton").click(function(){
 
 	if(flag){
 		
-		flyerSlug = $('img.flyer').attr("src").substring(7);
+		flyerSlug = $('img.flyer').attr("src");
 
 
 	if( (localStorage.getItem('bookmark_flyers')) == null){
