@@ -125,6 +125,7 @@
 }
 
 
+
 #goback{
 	position:absolute;
 	top:-38px;
@@ -132,5 +133,18 @@
 	width:40px;
 	height:40px;
 	z-index:12;
-	background-color:black;
+	background-color:#7f0000;
+	border-radius:25px;
+}
+#goback:after{
+	content:"X";
+	color:white;
+	text-align:center;
+	vertical-align:center;
+	margin-left:40%;
+	margin-top:20%;
+	line-height:40px;
+}
+#goback:hover{
+	cursor:pointer;
 }
